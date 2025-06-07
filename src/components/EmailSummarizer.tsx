@@ -33,7 +33,14 @@ const EmailSummarizer = () => {
       }
 
       const data = await response.json();
-      setSummary(data.summary || "Summary generated successfully from your n8n backend.");
+      console.log('Webhook response:', data);
+      
+      // Extract the output from the webhook response structure
+      if (data && data.length > 0 && data[0].output) {
+        setSummary(data[0].output);
+      } else {
+        setSummary("Summary generated successfully from your n8n backend.");
+      }
     } catch (err) {
       setError('Failed to connect to backend. Please try again.');
       console.error('Error:', err);
@@ -55,7 +62,7 @@ const EmailSummarizer = () => {
         <div className="glass-effect-dark rounded-xl px-3 py-2 animate-logo-pulse hover:scale-110 transition-all duration-500">
           <div className="flex items-center space-x-2">
             <div className="p-1.5 bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-500 rounded-lg animate-pulse-glow">
-              <Brain className="w-4 h-4 text-white animate-bounce" style={{ animationDelay: '0.5s' }} />
+              <Brain className="w-4 h-4 text-white" />
             </div>
             <div>
               <div className="logo-text text-sm bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent animate-gradient">SmartSum</div>
@@ -76,16 +83,16 @@ const EmailSummarizer = () => {
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 pt-20 md:pt-4">
         {/* Enhanced Header */}
-        <div className="text-center mb-8 animate-fade-in">
-          <div className="flex items-center justify-center mb-4">
+        <div className="text-center mb-6 animate-fade-in">
+          <div className="flex items-center justify-center mb-3">
             <div className="p-2 glass-effect-dark rounded-full mr-3 animate-pulse-glow">
-              <Mail className="w-5 h-5 text-white animate-bounce" style={{ animationDelay: '0.2s' }} />
+              <Mail className="w-4 h-4 text-white" />
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white animate-gradient bg-gradient-to-r from-emerald-300 via-blue-300 to-purple-300 bg-clip-text text-transparent">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white animate-gradient bg-gradient-to-r from-emerald-300 via-blue-300 to-purple-300 bg-clip-text text-transparent">
               Email <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Summarizer</span>
             </h1>
           </div>
-          <p className="text-sm md:text-base lg:text-lg text-white/80 max-w-xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          <p className="text-sm md:text-base text-white/80 max-w-xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.3s' }}>
             Transform lengthy emails into clear, actionable summaries with AI intelligence
           </p>
         </div>
@@ -169,7 +176,7 @@ const EmailSummarizer = () => {
             <div className="p-6">
               <div className="flex items-center mb-4">
                 <div className="p-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg mr-2 animate-pulse-glow">
-                  <CheckCircle2 className="w-4 h-4 text-white animate-bounce" />
+                  <CheckCircle2 className="w-4 h-4 text-white" />
                 </div>
                 <h3 className="text-lg font-bold text-white">Email Summary</h3>
               </div>
