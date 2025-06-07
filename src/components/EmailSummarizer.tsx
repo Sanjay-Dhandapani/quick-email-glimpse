@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
-import { Sparkles, Mail, Zap, ArrowRight } from 'lucide-react';
+import { Sparkles, Mail, Zap, ArrowRight, User } from 'lucide-react';
 
 const EmailSummarizer = () => {
   const [emailContent, setEmailContent] = useState('');
@@ -31,11 +31,26 @@ const EmailSummarizer = () => {
 
   return (
     <div className="min-h-screen lovable-gradient animate-gradient relative overflow-hidden">
+      {/* Logo */}
+      <div className="logo-container">
+        <div className="glass-effect-dark rounded-2xl px-4 py-3 animate-logo-pulse">
+          <div className="flex items-center space-x-2">
+            <div className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg">
+              <User className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <div className="logo-text">Sanjay</div>
+              <div className="text-xs text-white/70 font-medium">EmailAI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Floating background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-500/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-900/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-900/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-violet-900/25 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
@@ -46,7 +61,7 @@ const EmailSummarizer = () => {
               <Mail className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white">
-              Email <span className="bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent">Summarizer</span>
+              Email <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Summarizer</span>
             </h1>
           </div>
           <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
@@ -81,7 +96,7 @@ const EmailSummarizer = () => {
                 <Button
                   onClick={handleSummarize}
                   disabled={!emailContent.trim() || isLoading}
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-4 text-lg rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  className="flex-1 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white font-semibold py-4 text-lg rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
                   {isLoading ? (
                     <div className="flex items-center">
@@ -116,7 +131,7 @@ const EmailSummarizer = () => {
           <Card className="w-full max-w-4xl mt-8 glass-effect-dark border-white/20 animate-slide-up">
             <div className="p-8">
               <div className="flex items-center mb-6">
-                <div className="p-2 bg-gradient-to-r from-green-400 to-blue-500 rounded-lg mr-3">
+                <div className="p-2 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg mr-3">
                   <Sparkles className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-white">Email Summary</h3>

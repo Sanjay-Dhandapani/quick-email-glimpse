@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Enhanced design system with Lovable-inspired gradients */
+/* Enhanced design system with darker Lovable-inspired gradients */
 
 @layer base {
   :root {
@@ -88,13 +88,13 @@
   }
 }
 
-/* Custom gradient backgrounds */
+/* Custom darker gradient backgrounds */
 .lovable-gradient {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #533483 75%, #7209b7 100%);
 }
 
 .lovable-gradient-dark {
-  background: linear-gradient(135deg, #2D1B69 0%, #11998e 25%, #38ef7d 50%, #ff6b6b 75%, #4ecdc4 100%);
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 25%, #21262d 50%, #30363d 75%, #484f58 100%);
 }
 
 /* Enhanced animations */
@@ -104,14 +104,19 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.4); }
-  50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8), 0 0 60px rgba(245, 87, 108, 0.4); }
+  0%, 100% { box-shadow: 0 0 20px rgba(114, 9, 183, 0.4); }
+  50% { box-shadow: 0 0 40px rgba(114, 9, 183, 0.8), 0 0 60px rgba(83, 52, 131, 0.4); }
 }
 
 @keyframes gradient-shift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+@keyframes logo-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 .animate-float {
@@ -127,6 +132,10 @@
   animation: gradient-shift 8s ease infinite;
 }
 
+.animate-logo-pulse {
+  animation: logo-pulse 3s ease-in-out infinite;
+}
+
 /* Glassmorphism effects */
 .glass-effect {
   background: rgba(255, 255, 255, 0.1);
@@ -138,4 +147,33 @@
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Logo styles */
+.logo-container {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 50;
+}
+
+.logo-text {
+  background: linear-gradient(135deg, #a855f7, #ec4899, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+@media (max-width: 768px) {
+  .logo-container {
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  .logo-text {
+    font-size: 1.25rem;
+  }
 }
